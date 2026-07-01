@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88d698a40d7487ea0f6782684d2da7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.GameInstaller
-  _diamondPrefab: {fileID: 3194257323237971369, guid: 508c7cff3e10b3c499a2fee4a372ab21, type: 3}
+  diamondPrefab: {fileID: 3194257323237971369, guid: 508c7cff3e10b3c499a2fee4a372ab21, type: 3}
