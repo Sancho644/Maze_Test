@@ -1,4 +1,5 @@
-﻿using Diamonds.Signals;
+﻿using Common;
+using Diamonds.Signals;
 using UnityEngine;
 using Zenject;
 
@@ -6,8 +7,6 @@ namespace Diamonds
 {
     public class Diamond : MonoBehaviour
     {
-        private const string PlayerTag = "Player";
-        
         private SignalBus _signalBus;
 
         [Inject]
@@ -18,7 +17,7 @@ namespace Diamonds
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag(PlayerTag))
+            if (!other.CompareTag(GameConstants.Tags.Player))
                 return;
 
             _signalBus.Fire(new DiamondCollectedSignal(this));

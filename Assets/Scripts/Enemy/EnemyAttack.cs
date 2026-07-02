@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using Common;
+using Player;
 using Player.Signals;
 using UnityEngine;
 using Zenject;
@@ -18,7 +19,7 @@ namespace Enemy
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Player"))
+            if (!other.CompareTag(GameConstants.Tags.Player))
                 return;
 
             _signalBus.Fire<PlayerDiedSignal>();
