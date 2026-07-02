@@ -1,6 +1,4 @@
-﻿using Diamonds;
-
-namespace Signals
+﻿namespace Diamonds.Signals
 {
     public class DiamondCollectedSignal
     {

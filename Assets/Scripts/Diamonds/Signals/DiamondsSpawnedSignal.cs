@@ -1,4 +1,4 @@
-﻿namespace Signals
+﻿namespace Diamonds.Signals
 {
     public class DiamondsSpawnedSignal
     {

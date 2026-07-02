@@ -1,5 +1,6 @@
 ﻿using System;
-using Signals;
+using Core;
+using Diamonds.Signals;
 using Zenject;
 
 namespace Diamonds
@@ -9,7 +10,8 @@ namespace Diamonds
         private readonly SignalBus _signalBus;
 
         private int _remainingDiamonds;
-
+        private int _totalDiamonds;
+        
         public DiamondManager(SignalBus signalBus)
         {
             _signalBus = signalBus;
@@ -29,17 +31,30 @@ namespace Diamonds
 
         private void OnDiamondsSpawned(DiamondsSpawnedSignal signal)
         {
+            _totalDiamonds = signal.Count;
             _remainingDiamonds = signal.Count;
+
+            PublishCounter();
         }
 
         private void OnDiamondCollected(DiamondCollectedSignal signal)
         {
             _remainingDiamonds--;
 
+            PublishCounter();
+
             if (_remainingDiamonds <= 0)
             {
                 _signalBus.Fire<AllDiamondsCollectedSignal>();
             }
+        }
+        
+        private void PublishCounter()
+        {
+            _signalBus.Fire(new DiamondsCountChangedSignal(
+                new CollectibleProgress(
+                    _totalDiamonds - _remainingDiamonds,
+                _totalDiamonds)));
         }
     }
 }

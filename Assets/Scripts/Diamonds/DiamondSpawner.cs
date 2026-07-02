@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Signals;
+using Diamonds.Signals;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
