@@ -12,8 +12,7 @@ namespace Player
         [SerializeField] private Transform cameraRoot;
 
         [Header("Settings")] 
-        [SerializeField] private float sensitivity = 0.1f;
-        [SerializeField] private float maxLookAngle = 80f;
+        [SerializeField] private PlayerConfig config;
 
         private PlayerInputReader _input;
         private SignalBus _signalBus;
@@ -48,12 +47,12 @@ namespace Player
 
         private void Look()
         {
-            var lookInput = _input.Look * sensitivity;
+            var lookInput = _input.Look * config.MouseSensitivity;
 
             transform.Rotate(Vector3.up * lookInput.x);
 
             _pitch -= lookInput.y;
-            _pitch = Mathf.Clamp(_pitch, -maxLookAngle, maxLookAngle);
+            _pitch = Mathf.Clamp(_pitch, config.MinPitch, config.MaxPitch);
 
             cameraRoot.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
         }

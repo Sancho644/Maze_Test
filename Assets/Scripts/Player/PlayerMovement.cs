@@ -9,9 +9,8 @@ namespace Player
     [RequireComponent(typeof(PlayerInputReader))]
     public class PlayerMovement : MonoBehaviour
     {
-        [Header("Movement")]
-        [SerializeField] private float walkSpeed = 4f;
-        [SerializeField] private float runSpeed = 7f;
+        [Header("Settings")] 
+        [SerializeField] private PlayerConfig config;
 
         [Header("Gravity")]
         [SerializeField] private float gravity = -20f;
@@ -54,7 +53,7 @@ namespace Player
             if (_controller.isGrounded && _verticalVelocity < 0)
                 _verticalVelocity = -2f;
 
-            var speed = _input.IsRunning ? runSpeed : walkSpeed;
+            var speed = _input.IsRunning ? config.SprintSpeed : config.WalkSpeed;
 
             var direction =
                 transform.forward * _input.Move.y +
