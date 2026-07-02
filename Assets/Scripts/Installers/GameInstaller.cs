@@ -20,7 +20,17 @@ namespace Installers
             SignalBusInstaller.Install(Container);
 
             InstallSignals();
+            InstallServices();
 
+            Container.BindFactory<Diamond, Factory>()
+                .FromComponentInNewPrefab(diamondPrefab)
+                .UnderTransformGroup(DiamondsTransformGroupName);
+            
+            Container.Bind<Player.Player>().FromComponentInHierarchy().AsSingle();
+        }
+
+        private void InstallServices()
+        {
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<DiamondManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<DiamondSpawner>().AsSingle();
@@ -28,12 +38,6 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<ExitController>().AsSingle();
             
             Container.Bind<SceneLoader>().AsSingle();
-
-            Container.BindFactory<Diamond, Factory>()
-                .FromComponentInNewPrefab(diamondPrefab)
-                .UnderTransformGroup(DiamondsTransformGroupName);
-            
-            Container.Bind<Player.Player>().FromComponentInHierarchy().AsSingle();
         }
 
         private void InstallSignals()

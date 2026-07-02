@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using Core.Signals;
 using UnityEngine;
 using Zenject;
@@ -26,6 +27,10 @@ namespace Player
         {
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<PlayerInputReader>();
+        }
+
+        private void OnEnable()
+        {
             _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
         }
 

@@ -12,7 +12,7 @@ namespace UI
 
         private SignalBus _signalBus;
 
-        private void Awake()
+        private void OnEnable()
         {
             _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
         }

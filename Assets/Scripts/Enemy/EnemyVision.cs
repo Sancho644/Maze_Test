@@ -21,7 +21,7 @@ namespace Enemy
         private Transform _player;
         private bool _enabled = true;
 
-        private void Awake()
+        private void OnEnable()
         {
             _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
         }
@@ -43,14 +43,14 @@ namespace Enemy
             if (!_enabled)
                 return false;
             
-            Vector3 direction = _player.position - eyes.position;
+            var direction = _player.position - eyes.position;
 
-            float distance = direction.magnitude;
+            var distance = direction.magnitude;
 
             if (distance > config.ViewDistance)
                 return false;
 
-            float angle = Vector3.Angle(transform.forward, direction);
+            var angle = Vector3.Angle(transform.forward, direction);
 
             if (angle > config.ViewAngle * 0.5f)
                 return false;

@@ -33,7 +33,5 @@ namespace Enemy
         public bool ReachedDestination =>
             !_agent.pathPending &&
             _agent.remainingDistance <= _agent.stoppingDistance;
-
-        public Vector3 Position => transform.position;
     }
 }

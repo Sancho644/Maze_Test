@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Core;
 using Core.Signals;
 using Enemy.StateMachine.States;
@@ -28,7 +27,10 @@ namespace Enemy
                 { EnemyStateType.Patrol, new PatrolState(enemyMovement, enemyVision, patrolPath) },
                 { EnemyStateType.Chase, new ChaseState(enemyMovement, enemyVision) }
             };
-            
+        }
+
+        private void OnEnable()
+        {
             _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
         }
 
