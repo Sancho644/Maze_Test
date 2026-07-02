@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6595610919762694460}
   - component: {fileID: 8770644529155539909}
   - component: {fileID: 7102797503500055725}
+  - component: {fileID: 6779054055353844955}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -134,6 +135,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745b5a99d59543a485ca95e85873f233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.PlayerInputReader
+--- !u!114 &6779054055353844955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013112365730464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86df384e9d4a41edbb2ad13bde25e24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Player
 --- !u!1 &1873110077531870503
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +212,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
