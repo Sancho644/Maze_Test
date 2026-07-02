@@ -105,8 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5524fa2234e4ae4827b44c08e062a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.PlayerMovement
-  walkSpeed: 4
-  runSpeed: 10
+  config: {fileID: 11400000, guid: c00f02f6989e98649ba7c70693a3440c, type: 2}
   gravity: -20
 --- !u!114 &8770644529155539909
 MonoBehaviour:
@@ -121,8 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.PlayerLook
   cameraRoot: {fileID: 7393369874570216792}
-  sensitivity: 0.1
-  maxLookAngle: 80
+  config: {fileID: 11400000, guid: c00f02f6989e98649ba7c70693a3440c, type: 2}
 --- !u!114 &7102797503500055725
 MonoBehaviour:
   m_ObjectHideFlags: 0
