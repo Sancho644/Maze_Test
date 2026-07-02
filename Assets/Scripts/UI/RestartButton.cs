@@ -1,6 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using Core;
+using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UI
 {
@@ -8,6 +9,8 @@ namespace UI
     {
         [SerializeField] private Button button;
 
+        private SceneLoader _sceneLoader;
+        
         private void Awake()
         {
             button.onClick.AddListener(OnClick);
@@ -17,10 +20,16 @@ namespace UI
         {
             button.onClick.AddListener(OnClick);
         }
+        
+        [Inject]
+        public void Construct(SceneLoader sceneLoader)
+        {
+            _sceneLoader = sceneLoader;
+        }
 
         private void OnClick()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            _sceneLoader.RestartLevel();
         }
     }
 }

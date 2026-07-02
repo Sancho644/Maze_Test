@@ -27,12 +27,6 @@ namespace Player
             _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
         }
 
-        private void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
         private void Update()
         {
             if (!_enabled)

@@ -2,6 +2,7 @@
 using Core.Signals;
 using Diamonds;
 using Diamonds.Signals;
+using Input;
 using Player.Signals;
 using UnityEngine;
 using Zenject;
@@ -23,6 +24,10 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<DiamondManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<DiamondSpawner>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CursorController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ExitController>().AsSingle();
+            
+            Container.Bind<SceneLoader>().AsSingle();
 
             Container.BindFactory<Diamond, Factory>()
                 .FromComponentInNewPrefab(diamondPrefab)
