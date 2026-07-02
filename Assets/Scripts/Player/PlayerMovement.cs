@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Core;
+using Core.Signals;
+using UnityEngine;
+using Zenject;
 
 namespace Player
 {
@@ -15,18 +18,35 @@ namespace Player
 
         private CharacterController _controller;
         private PlayerInputReader _input;
+        private SignalBus _signalBus;
 
         private float _verticalVelocity;
+        private bool _enabled = true;
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<PlayerInputReader>();
+            _signalBus.Subscribe<GameStateChangedSignal>(OnGameStateChanged);
         }
 
         private void Update()
         {
+            if (!_enabled) 
+                return;
+            
             Move();
+        }
+
+        private void OnDisable()
+        {
+            _signalBus.Unsubscribe<GameStateChangedSignal>(OnGameStateChanged);
+        }
+
+        [Inject]
+        public void Construct(SignalBus signalBus)
+        {
+            _signalBus = signalBus;
         }
 
         private void Move()
@@ -48,6 +68,12 @@ namespace Player
             direction.y = _verticalVelocity;
 
             _controller.Move(direction * Time.deltaTime);
+        }
+
+        private void OnGameStateChanged(GameStateChangedSignal signal)
+        {
+            if (signal.State != GameState.Playing)
+                _enabled = false;
         }
     }
 }
