@@ -2,6 +2,9 @@
 using Core.Signals;
 using UnityEngine;
 using Zenject;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Enemy
 {
@@ -69,5 +72,31 @@ namespace Enemy
             if (signal.State != GameState.Playing)
                 _enabled = false;
         }
+        
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            if (eyes == null || config == null)
+                return;
+
+            Handles.color = new Color(1f, 1f, 0f, 0.15f);
+
+            Handles.DrawSolidArc(
+                eyes.position,
+                Vector3.up,
+                Quaternion.Euler(0, -config.ViewAngle / 2, 0) * transform.forward,
+                config.ViewAngle,
+                config.ViewDistance);
+
+            Handles.color = Color.yellow;
+
+            Handles.DrawWireArc(
+                eyes.position,
+                Vector3.up,
+                Quaternion.Euler(0, -config.ViewAngle / 2, 0) * transform.forward,
+                config.ViewAngle,
+                config.ViewDistance);
+        }
+#endif
     }
 }
