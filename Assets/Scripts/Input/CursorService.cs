@@ -6,11 +6,11 @@ using Zenject;
 
 namespace Input
 {
-    public class CursorController : IInitializable, IDisposable
+    public class CursorService : IInitializable, IDisposable
     {
         private readonly SignalBus _signalBus;
 
-        public CursorController(SignalBus signalBus)
+        public CursorService(SignalBus signalBus)
         {
             _signalBus = signalBus;
         }

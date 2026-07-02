@@ -24,7 +24,7 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<DiamondManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<DiamondSpawner>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CursorController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CursorService>().AsSingle();
             Container.BindInterfacesAndSelfTo<ExitController>().AsSingle();
             
             Container.Bind<SceneLoader>().AsSingle();
