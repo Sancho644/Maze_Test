@@ -1,10 +1,9 @@
-﻿using System;
-using Diamonds.Signals;
+﻿using Diamonds.Signals;
 using Player.Signals;
 using UnityEngine;
 using Zenject;
 
-public class ExitController : MonoBehaviour, IInitializable, IDisposable
+public class ExitController : MonoBehaviour
 {
     private SignalBus _signalBus;
 
@@ -16,12 +15,12 @@ public class ExitController : MonoBehaviour, IInitializable, IDisposable
         _signalBus = signalBus;
     }
 
-    public void Initialize()
+    public void Awake()
     {
         _signalBus.Subscribe<AllDiamondsCollectedSignal>(UnlockExit);
     }
 
-    public void Dispose()
+    public void OnDestroy()
     {
         _signalBus.Unsubscribe<AllDiamondsCollectedSignal>(UnlockExit);
     }

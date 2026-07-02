@@ -1,6 +1,5 @@
 ﻿using System;
 using Core.Signals;
-using Player;
 using Player.Signals;
 using Zenject;
 

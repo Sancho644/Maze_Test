@@ -28,7 +28,7 @@ namespace Diamonds
 
         private void SpawnDiamonds()
         {
-            var available = diamondSpawnPoints;
+            var available = new List<Transform>(diamondSpawnPoints);
 
             diamondsToSpawn = Mathf.Min(diamondsToSpawn, available.Count);
 
