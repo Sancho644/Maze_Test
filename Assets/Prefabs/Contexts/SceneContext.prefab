@@ -45,7 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.DiamondSpawner
   diamondsToSpawn: 5
-  diamondSpawnPoints: []
+  diamondSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6719756821937479989
 GameObject:
   m_ObjectHideFlags: 0
